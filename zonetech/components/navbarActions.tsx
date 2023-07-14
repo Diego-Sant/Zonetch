@@ -1,7 +1,7 @@
 "use client";
 
 import { ShoppingBag } from "lucide-react";
-import Button from "./ui/button";
+import Button from "./ui/personalButton";
 import { useEffect, useState } from "react";
 
 
