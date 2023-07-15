@@ -8,7 +8,7 @@ export const relative = 0;
 
 const Home = async () => {
   const products = await getProducts({ isFeatured: true});
-  const billboard = await getBillboard("617a6669-2edf-42a5-90cb-e52a38ff571f")
+  const billboard = await getBillboard("38f5648a-9b90-4c5c-997d-3f248f8838bc")
 
   return (
     <div>

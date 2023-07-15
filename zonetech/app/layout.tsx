@@ -13,11 +13,8 @@ export const metadata: Metadata = {
   description: 'Uma loja de periféricos e tecnologias!',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: {children: React.ReactNode}) {
+  
   return (
     <html lang="pt-BR">
       <body className={font.className}>

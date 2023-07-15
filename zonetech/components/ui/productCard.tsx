@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
     }
 
     return (
-        <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+        <div className="bg-white group h-full cursor-pointer rounded-xl border p-3 space-y-4">
             <div className="aspect-square rounded-xl bg-gray-100 relative">
                 <Image onClick={handleClick} alt={data.name} src={data?.images?.[0]?.url} fill className="aspect-square object-cover rounded-md" />
                 <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
@@ -31,7 +31,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
                 </div>
             </div>
             <div className="cursor-auto">
-                <p className="font-bold line-clamp-3 mb-4">{data.name}</p>
+                <p className="font-bold line-clamp-2 mb-4">{data.name}</p>
                 <Currency value={data?.price} />
             </div>
             <div onClick={handleClick}>
