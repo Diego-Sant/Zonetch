@@ -1,13 +1,19 @@
 "use client";
 
+import { MouseEventHandler } from "react";
 import { Product } from "@/types";
-import Image from "next/image";
-import IconButton from "./iconButton";
-import { ShoppingCart } from "lucide-react";
+
+import { Expand, ShoppingCart } from "lucide-react";
+import { BsFillCartPlusFill } from "react-icons/bs";
+
 import Currency from "./currency";
 import Button from "./personalButton";
-import { BsFillCartPlusFill } from "react-icons/bs";
+import IconButton from "./iconButton";
+
+import usePreviewModal from "@/hooks/usePreviewModal";
+
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface ProductCardProps {
     data: Product;
@@ -15,9 +21,16 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
     const router = useRouter();
+    const previewModal = usePreviewModal();
 
     const handleClick = () => {
         router.push(`/produtos/${data?.id}`);
+    }
+
+    const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+        event.stopPropagation();
+
+        previewModal.onOpen(data);
     }
 
     return (
@@ -25,7 +38,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             <div className="aspect-square rounded-xl bg-gray-100 relative">
                 <Image onClick={handleClick} alt={data.name} src={data?.images?.[0]?.url} fill className="aspect-square object-cover rounded-md" />
                 <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
-                    <div className="flex justify-center">
+                    <div className="flex justify-center gap-4">
+                        <IconButton onClick={onPreview} icon={<Expand size={20} className="text-gray-600" />} />
                         <IconButton onClick={() => {}} icon={<BsFillCartPlusFill size={20} className="text-gray-600" />} />
                     </div>
                 </div>
