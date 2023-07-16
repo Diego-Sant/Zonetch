@@ -14,6 +14,7 @@ import usePreviewModal from "@/hooks/usePreviewModal";
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import useCart from "@/hooks/useCart";
 
 interface ProductCardProps {
     data: Product;
@@ -21,7 +22,9 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
     const router = useRouter();
+
     const previewModal = usePreviewModal();
+    const cart = useCart();
 
     const handleClick = () => {
         router.push(`/produtos/${data?.id}`);
@@ -33,6 +36,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         previewModal.onOpen(data);
     }
 
+    const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+        event.stopPropagation();
+
+        cart.addItem(data);
+    }
+
     return (
         <div className="bg-white group h-full cursor-pointer rounded-xl border p-3 space-y-4">
             <div className="aspect-square rounded-xl bg-gray-100 relative">
@@ -40,7 +49,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
                 <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
                     <div className="flex justify-center gap-4">
                         <IconButton onClick={onPreview} icon={<Expand size={20} className="text-gray-600" />} />
-                        <IconButton onClick={() => {}} icon={<BsFillCartPlusFill size={20} className="text-gray-600" />} />
+                        <IconButton onClick={onAddToCart} icon={<BsFillCartPlusFill size={20} className="text-gray-600" />} />
                     </div>
                 </div>
             </div>

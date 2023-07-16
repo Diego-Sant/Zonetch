@@ -43,7 +43,7 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
             <nav className={cn("flex items-center space-x-4 lg:space-x-6 ml-2")}>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button className="h-9" variant="outline"><AlignJustify className="w-4 h-4 mr-2" />Menu</Button>
+                        <Button className="h-12 text-md" variant="outline"><AlignJustify className="w-5 h-5 mr-2" />Menu</Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56">
                         <DropdownMenuLabel className="flex justify-center items-center">Menu Responsivo</DropdownMenuLabel>
