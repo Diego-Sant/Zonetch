@@ -5,6 +5,7 @@ import Button from "./ui/personalButton";
 import { useEffect, useState } from "react";
 import useCart from "@/hooks/useCart";
 import { useRouter } from "next/navigation";
+import { ModeToggle } from "./themeToggles";
 
 
 const NavbarActions = () => {
@@ -23,6 +24,7 @@ const NavbarActions = () => {
 
     return (
         <div className="ml-auto flex items-center gap-x-4">
+            <ModeToggle />
             <Button onClick={() => router.push("/carrinho")} className="flex items-center rounded-full bg-[#0f172a] px-4 py-2">
                 <ShoppingBag size={20} color="white" />
                 <span className="ml-2 text-sm font-medium text-white">{cart.items.length}</span>

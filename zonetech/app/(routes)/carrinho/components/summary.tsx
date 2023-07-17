@@ -24,7 +24,7 @@ const Summary = () => {
         }
 
         if (searchParams.get("canceled")) {
-            toast.error("Algo de errado aconteceu, tente novamente mais tarde!")
+            toast.error("Compra cancelada!")
         }
     }, [searchParams, removeAll])
 
@@ -42,17 +42,17 @@ const Summary = () => {
 
 
   return (
-    <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
-        <h2 className="text-lg font-medium text-gray-900">Resumo do pedido</h2>
+    <div className="mt-16 rounded-lg bg-gray-50 dark:bg-[#0e1525] px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
+        <h2 className="text-lg font-medium text-gray-900 dark:text-gray-200">Resumo do pedido</h2>
         <div className="mt-6 space-y-4">
             <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                <div className="text-base font-medium text-gray-900">
+                <div className="text-base font-medium text-gray-900 dark:text-gray-200">
                     Valor total dos produtos
                 </div>
                 <Currency value={totalPrice} />
             </div>
         </div>
-        <Button onClick={onCheckout} className="w-full mt-6 text-lg md:text-xl">
+        <Button disabled={items.length === 0} onClick={onCheckout} className="w-full mt-6 text-lg md:text-xl">
             Finalizar pedido
         </Button>
     </div>
